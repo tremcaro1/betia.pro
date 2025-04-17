@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<!-- Mirrored from v1-betlionpro-clph.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Apr 2025 03:15:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTA BUGADA</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Montserrat'],
+          },
+          animation: {
+            'matrix-spin': 'spin 1s linear infinite',
+            'matrix-fall': 'fall 2s linear infinite',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'pulse-glow': 'pulseGlow 1.5s infinite',
+            'bounce-in': 'bounceIn 0.8s',
+            'shake': 'shake 0.5s'
+          },
+          keyframes: {
+            spin: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'scale(0.8)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            },
+            pulseGlow: {
+              '0%, 100%': {
+                transform: 'scale(1)',
+                boxShadow: '0 0 0 0 rgba(0, 255, 0, 0.4)',
+                textShadow: '0 0 5px rgba(0, 255, 0, 1)',
+              },
+              '50%': {
+                transform: 'scale(1.05)',
+                boxShadow: '0 0 15px 5px rgba(0, 255, 0, 0.7)',
+                textShadow: '0 0 20px rgba(0, 255, 0, 1)',
+              }
+            },
+            bounceIn: {
+              '0%': { opacity: '0', transform: 'scale(0.3)' },
+              '50%': { opacity: '1', transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)' }
+            },
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+              '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes matrix-blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .orbe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      --delay: calc(var(--index) * 0.1s);
+      animation: orbit7456 ease-in-out 1.5s var(--delay) infinite;
+      opacity: calc(1 - calc(0.2 * var(--index)));
+    }
+
+    .orbe::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: var(--size-orbe);
+      height: var(--size-orbe);
+      background-color: #3ae374;
+      box-shadow: 0px 0px 20px 2px #3ae374;
+      border-radius: 50%;
+    }
+
+    @keyframes orbit7456 {
+      0% {}
+
+      80% {
+        transform: rotate(360deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-black overflow-hidden  font-sans">
+  <canvas id="matrixCanvas" class="fixed inset-0 z-0 opacity-40 w-full h-full"></canvas>
+
+  <div class="fixed inset-0 z-10 flex items-center justify-center animate-bounce-in">
+    <div id="screen1" class="bg-black/70 p-8 rounded-xl text-center">
+      <h1 class="font-bold text-white text-3xl mb-6 animate-bounce-in">Clique para <span
+          class="text-green-500">Gerar</span> seu código</h1>
+    </div>
+    <div id="screen2" class="bg-black/70 hidden p-8 rounded-xl text-center">
+      <div class='flex space-x-2 justify-center items-center mb-4'>
+        <span class='sr-only'>Loading...</span>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce'></div>
+      </div>
+      <p class="text-green-500 animate-bounce-in">Gerando...</p>
+    </div>
+    <label class="switch" id="toggleSwitch" onclick="goToLoadingScreen()">
+      <input type="checkbox" class="input__check">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <!-- 
+  <div id="screen2" class="fixed inset-0 z-10 flex items-center justify-center hidden animate-fade-in">
+    <div class="bg-black/70 p-8 rounded-xl text-center">
+      <div class='flex space-x-2 justify-center items-center mb-4'>
+        <span class='sr-only'>Loading...</span>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+        <div class='h-8 w-8 bg-green-400 rounded-full animate-bounce'></div>
+      </div>
+      <p class="text-green-500 animate-bounce-in">Gerando...</p>
+    </div>
+  </div> -->
+
+  <div id="screen3" class="fixed inset-0 mx-3 z-10 flex items-center justify-center hidden animate-fade-in">
+    <div class="bg-black/70 p-8 rounded-xl text-center">
+      <h2 class="text-green-500 font-bold text-2xl mb-4 animate-bounce-in">Seu código é: <span id="generatedCode"
+          style="color: #3BD734;"></span></h2>
+      <div id="generatedLink" class="bg-green-900 p-4 rounded-lg mb-4 text-green-300 break-all"></div>
+      <div class="flex flex-col gap-4 justify-center">
+        <button onclick="copyLink()" class="bg-green-400 font-bold text-black px-4 py-2 rounded-lg hover:bg-green-600 
+                           transition-colors animate-pulse-glow hover:animate-none">
+          COPIAR CÓDIGO
+        </button>
+        <button onclick="openLink()" class="bg-green-400 font-bold text-black px-4 py-2 rounded-lg hover:bg-green-600 
+                           transition-colors animate-pulse-glow hover:animate-none">
+          ACESSAR BETLIONPRO
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const matrixCanvas = document.getElementById('matrixCanvas');
+    const ctx = matrixCanvas.getContext('2d');
+
+    // Função para redimensionar o canvas
+    function resizeCanvas() {
+      matrixCanvas.width = window.innerWidth;
+      matrixCanvas.height = window.innerHeight;
+    }
+
+    // Chama no início para configurar tamanho completo
+    resizeCanvas();
+
+    // Adiciona listener para redimensionamento
+    window.addEventListener('resize', resizeCanvas);
+
+    // Caracteres personalizados
+    const characters = ["*", "X", "+", "-", "1", "0", "1", "0", "m"];
+
+    // Configurações do canvas
+    const fontSize = 14;
+    const columns = Math.floor(matrixCanvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      // Fundo com opacidade reduzida
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+      ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+      // Caracteres com opacidade suave
+      ctx.fillStyle = 'rgba(0, 255, 0, 0.7)';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        // Seleciona caractere aleatório do conjunto personalizado
+        const text = characters[Math.floor(Math.random() * characters.length)];
+
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Reinicia a coluna quando atinge o fim da tela
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.95) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    // Iniciar animação Matrix
+    setInterval(drawMatrix, 50);
+
+    function goToLoadingScreen() {
+      var toggleSwitch = document.getElementById("toggleSwitch");
+      var switchInput = document.querySelector('.input__check');
+      if (switchInput.checked) {
+        document.getElementById('screen1').classList.add('hidden');
+        document.getElementById('screen2').classList.remove('hidden');
+
+        // Simula geração de link após 2 segundos
+        setTimeout(() => {
+          const generatedLink = "#" + Math.random().toString(36).substr(2, 5).toUpperCase() + "*";
+
+          document.getElementById('screen2').classList.add('hidden');
+          document.getElementById('screen3').classList.remove('hidden');
+          document.getElementById('generatedLink').textContent = generatedLink;
+          toggleSwitch.classList.add('hidden')
+        }, 2000);
+      }
+    }
+
+    function copyLink() {
+      const link = document.getElementById('generatedLink').textContent;
+      navigator.clipboard.writeText(link).then(() => {
+        alert(`Código copiado: ${link}`);
+      });
+    }
+
+    function openLink() {
+      window.open('https://betlionpro.com/?aff=222', '_blank');
+    }
+  </script>
+</body>
+
+
+<!-- Mirrored from v1-betlionpro-clph.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Apr 2025 03:15:11 GMT -->
+</html>

@@ -1,0 +1,4 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+00:15:10	2699/2699	---MCZ	200	added ('OK')	text/html	etag:W/%22e3b21b3c63354574c2314112be98e700%22	https://v1-betlionpro-clph.vercel.app/robots.txt		(from )
+00:15:10	8636/8636	---MCZ	200	added ('OK')	text/html	etag:W/%22e3b21b3c63354574c2314112be98e700%22	https://v1-betlionpro-clph.vercel.app/	C:/Meus%20Sites/gerador%20de%20codigo/v1-betlionpro-clph.vercel.app/index.html	(from )
+00:15:11	3364/3364	---MCZ	200	added ('OK')	text/css	etag:W/%22c7267696194385ef4c844be5a4e6bac5%22	https://v1-betlionpro-clph.vercel.app/styles.css	C:/Meus%20Sites/gerador%20de%20codigo/v1-betlionpro-clph.vercel.app/styles.css	(from https://v1-betlionpro-clph.vercel.app/)
